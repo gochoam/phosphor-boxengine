@@ -79,3 +79,83 @@ Usage Examples
 
 **Note:** This module is fully compatible with Node/Babel/ES6/ES5. Simply
 omit the type declarations when using a language other than TypeScript.
+
+```typescript
+import { BoxSizer, boxCalc } from 'phosphor-boxengine';
+
+// Setup a simple 3-column arrangement. Normally done via static HTML
+// or some form of DOM generation library. Kept simple for this example.
+var host = document.createElement('div');
+var col1 = document.createElement('div');
+var col2 = document.createElement('div');
+var col3 = document.createElement('div');
+var columns = [col1, col2, col3];
+
+host.style.position = 'relative';
+host.style.height = '500px';
+
+col1.style.position = 'absolute';
+col1.style.top = '0';
+col1.style.bottom = '0';
+
+col2.style.position = 'absolute';
+col2.style.top = '0';
+col2.style.bottom = '0';
+
+col3.style.position = 'absolute';
+col3.style.top = '0';
+col3.style.bottom = '0';
+
+host.appendChild(col1);
+host.appendChild(col2);
+host.appendChild(col3);
+document.body.appendChild(host);
+
+
+// Create the sizers for the columns.
+var sizer1 = new BoxSizer();
+var sizer2 = new BoxSizer();
+var sizer3 = new BoxSizer();
+var sizers = [sizer1, sizer2, sizer3];
+
+
+// Setup the constraints on the column widths.
+sizer1.minSize = 150;
+sizer2.maxSize = 250;
+sizer2.minSize = 100;
+sizer3.minSize = 150;
+sizer3.maxSize = 250;
+
+
+// Setup the desired sizes for the columns.
+sizer1.sizeHint = 300;
+sizer2.sizeHint = 600;
+sizer3.sizeHint = 200;
+
+
+// The middle column expands twice as fast as the others.
+sizer1.stretch = 1;
+sizer2.stretch = 2;
+sizer3.stretch = 1;
+
+
+// Layout the columns on each resize event. Note that `boxCalc` only
+// handles sizes in the direction of layout (`width` in this case).
+// The application decides how to handle the orthogonal dimension.
+window.onresize = () => {
+
+  // Compute the new column sizes for the host width.
+  boxCalc(sizers, host.offsetWidth);
+
+  // Layout the columns using the computed sizes.
+  var left = 0;
+  for (var i = 0; i < sizers.length; ++i) {
+    var col = columns[i];
+    var sizer = sizers[i];
+    col.style.left = left + 'px';
+    col.style.width = sizer.size + 'px';
+    left += sizer.size;
+  }
+
+};
+```
