@@ -1,6 +1,9 @@
 phosphor-boxengine
 ==================
 
+[![Build Status](https://travis-ci.org/phosphorjs/phosphor-boxengine.svg)](https://travis-ci.org/phosphorjs/phosphor-boxengine?branch=master)
+[![Coverage Status](https://coveralls.io/repos/phosphorjs/phosphor-boxengine/badge.svg?branch=master&service=github)](https://coveralls.io/github/phosphorjs/phosphor-boxengine?branch=master)
+
 A low-level box layout algorithm.
 
 [API Docs](http://phosphorjs.github.io/phosphor-boxengine/api/)
