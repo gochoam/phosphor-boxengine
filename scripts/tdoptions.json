@@ -1,0 +1,10 @@
+{
+  "module": "commonjs",
+  "target": "ES5",
+  "excludeNotExported": true,
+  "mode": "file",
+  "out": "docs/api",
+  "src": [
+    "src/index.ts"
+  ]
+}
