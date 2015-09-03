@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>phosphor-boxengine</title>
+	<title></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">phosphor-boxengine</a>
+					<a href="index.html" class="title"></a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -57,7 +57,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> phosphor-boxengine</h1>
+			<h1> </h1>
 		</div>
 	</div>
 </header>
@@ -65,136 +65,6 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="phosphor-boxengine">phosphor-boxengine</h1>
-				<p><a href="https://travis-ci.org/phosphorjs/phosphor-boxengine?branch=master"><img src="https://travis-ci.org/phosphorjs/phosphor-boxengine.svg" alt="Build Status"></a>
-				<a href="https://coveralls.io/github/phosphorjs/phosphor-boxengine?branch=master"><img src="https://coveralls.io/repos/phosphorjs/phosphor-boxengine/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a></p>
-				<p>A low-level box layout algorithm.</p>
-				<p><a href="http://phosphorjs.github.io/phosphor-boxengine/api/">API Docs</a></p>
-				<h2 id="package-install">Package Install</h2>
-				<p><strong>Prerequisites</strong></p>
-				<ul>
-					<li><a href="http://nodejs.org/">node</a></li>
-				</ul>
-				<pre><code class="lang-bash">npm install --save phosphor-boxengine
-</code></pre>
-				<h2 id="source-build">Source Build</h2>
-				<p><strong>Prerequisites</strong></p>
-				<ul>
-					<li><a href="http://git-scm.com/">git</a></li>
-					<li><a href="http://nodejs.org/">node</a></li>
-				</ul>
-				<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/phosphorjs/phosphor-boxengine.git
-<span class="hljs-built_in">cd</span> phosphor-boxengine
-npm install
-</code></pre>
-				<p><strong>Rebuild</strong></p>
-				<pre><code class="lang-bash">npm run clean
-npm run build
-</code></pre>
-				<h2 id="run-tests">Run Tests</h2>
-				<p>Follow the source build instructions first.</p>
-				<pre><code class="lang-bash">npm <span class="hljs-built_in">test</span>
-</code></pre>
-				<h2 id="build-docs">Build Docs</h2>
-				<p>Follow the source build instructions first.</p>
-				<pre><code class="lang-bash">npm run docs
-</code></pre>
-				<p>Navigate to <code>docs/index.html</code>.</p>
-				<h2 id="supported-runtimes">Supported Runtimes</h2>
-				<p>The runtime versions which are currently <em>known to work</em> are listed below.
-				Earlier versions may also work, but come with no guarantees.</p>
-				<ul>
-					<li>Node 0.12.7+</li>
-					<li>IE 11+</li>
-					<li>Firefox 32+</li>
-					<li>Chrome 38+</li>
-				</ul>
-				<h2 id="bundle-for-the-browser">Bundle for the Browser</h2>
-				<p>Follow the package install instructions first.</p>
-				<pre><code class="lang-bash">npm install --save-dev browserify browserify-css
-browserify myapp.js -t browserify-css -o mybundle.js
-</code></pre>
-				<h2 id="usage-examples">Usage Examples</h2>
-				<p><strong>Note:</strong> This module is fully compatible with Node/Babel/ES6/ES5. Simply
-				omit the type declarations when using a language other than TypeScript.</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BoxSizer, boxCalc } from <span class="hljs-string">'phosphor-boxengine'</span>;
-
-<span class="hljs-comment">// Setup a simple 3-column arrangement. Normally done via static HTML</span>
-<span class="hljs-comment">// or some form of DOM generation library. Kept simple for this example.</span>
-<span class="hljs-keyword">var</span> host = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col1 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col2 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col3 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> columns = [col1, col2, col3];
-
-host.style.position = <span class="hljs-string">'relative'</span>;
-host.style.height = <span class="hljs-string">'500px'</span>;
-
-col1.style.position = <span class="hljs-string">'absolute'</span>;
-col1.style.top = <span class="hljs-string">'0'</span>;
-col1.style.bottom = <span class="hljs-string">'0'</span>;
-
-col2.style.position = <span class="hljs-string">'absolute'</span>;
-col2.style.top = <span class="hljs-string">'0'</span>;
-col2.style.bottom = <span class="hljs-string">'0'</span>;
-
-col3.style.position = <span class="hljs-string">'absolute'</span>;
-col3.style.top = <span class="hljs-string">'0'</span>;
-col3.style.bottom = <span class="hljs-string">'0'</span>;
-
-host.appendChild(col1);
-host.appendChild(col2);
-host.appendChild(col3);
-<span class="hljs-built_in">document</span>.body.appendChild(host);
-
-
-<span class="hljs-comment">// Create the sizers for the columns.</span>
-<span class="hljs-keyword">var</span> sizer1 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizer2 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizer3 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizers = [sizer1, sizer2, sizer3];
-
-
-<span class="hljs-comment">// Setup the constraints on the column widths.</span>
-sizer1.minSize = <span class="hljs-number">150</span>;
-sizer2.maxSize = <span class="hljs-number">250</span>;
-sizer2.minSize = <span class="hljs-number">100</span>;
-sizer3.minSize = <span class="hljs-number">150</span>;
-sizer3.maxSize = <span class="hljs-number">250</span>;
-
-
-<span class="hljs-comment">// Setup the desired sizes for the columns.</span>
-sizer1.sizeHint = <span class="hljs-number">300</span>;
-sizer2.sizeHint = <span class="hljs-number">600</span>;
-sizer3.sizeHint = <span class="hljs-number">200</span>;
-
-
-<span class="hljs-comment">// The middle column expands twice as fast as the others.</span>
-sizer1.stretch = <span class="hljs-number">1</span>;
-sizer2.stretch = <span class="hljs-number">2</span>;
-sizer3.stretch = <span class="hljs-number">1</span>;
-
-
-<span class="hljs-comment">// Layout the columns on each resize event. Note that `boxCalc` only</span>
-<span class="hljs-comment">// handles sizes in the direction of layout (`width` in this case).</span>
-<span class="hljs-comment">// The application decides how to handle the orthogonal dimension.</span>
-<span class="hljs-built_in">window</span>.onresize = () =&gt; {
-
-  <span class="hljs-comment">// Compute the new column sizes for the host width.</span>
-  boxCalc(sizers, host.offsetWidth);
-
-  <span class="hljs-comment">// Layout the columns using the computed sizes.</span>
-  <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; sizers.length; ++i) {
-    <span class="hljs-keyword">var</span> col = columns[i];
-    <span class="hljs-keyword">var</span> sizer = sizers[i];
-    col.style.left = left + <span class="hljs-string">'px'</span>;
-    col.style.width = sizer.size + <span class="hljs-string">'px'</span>;
-    left += sizer.size;
-  }
-
-};
-</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -207,12 +77,6 @@ sizer3.stretch = <span class="hljs-number">1</span>;
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/boxsizer.html" class="tsd-kind-icon">Box<wbr>Sizer</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#boxcalc" class="tsd-kind-icon">box<wbr>Calc</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
