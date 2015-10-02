@@ -80,8 +80,8 @@ Bundle for the Browser
 Follow the package install instructions first.
 
 ```bash
-npm install --save-dev browserify browserify-css
-browserify myapp.js -t browserify-css -o mybundle.js
+npm install --save-dev browserify
+browserify myapp.js -o mybundle.js
 ```
 
 
