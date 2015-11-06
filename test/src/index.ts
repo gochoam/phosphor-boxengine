@@ -15,8 +15,8 @@ import {
 
 
 function createSizers(n: number): BoxSizer[] {
-  var sizers: BoxSizer[] = [];
-  for (var i = 0; i < n; ++i) {
+  let sizers: BoxSizer[] = [];
+  for (let i = 0; i < n; ++i) {
     sizers.push(new BoxSizer());
   }
   return sizers;
@@ -30,7 +30,7 @@ describe('phosphor-boxengine', () => {
     describe('#constructor()', () => {
 
       it('should accept no arguments', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(sizer instanceof BoxSizer).to.be(true);
       });
 
@@ -39,12 +39,12 @@ describe('phosphor-boxengine', () => {
     describe('#sizeHint', () => {
 
       it('should default to `0`', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(sizer.sizeHint).to.be(0);
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         sizer.sizeHint = 42;
         expect(sizer.sizeHint).to.be(42);
       });
@@ -54,12 +54,12 @@ describe('phosphor-boxengine', () => {
     describe('#minSize', () => {
 
       it('should default to `0`', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(sizer.minSize).to.be(0);
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         sizer.minSize = 42;
         expect(sizer.minSize).to.be(42);
       });
@@ -69,12 +69,12 @@ describe('phosphor-boxengine', () => {
     describe('#maxSize', () => {
 
       it('should default to `Infinity`', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(sizer.maxSize).to.be(Infinity);
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         sizer.maxSize = 42;
         expect(sizer.maxSize).to.be(42);
       });
@@ -84,12 +84,12 @@ describe('phosphor-boxengine', () => {
     describe('#stretch', () => {
 
       it('should default to `1`', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(sizer.stretch).to.be(1);
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         sizer.stretch = 42;
         expect(sizer.stretch).to.be(42);
       });
@@ -99,12 +99,12 @@ describe('phosphor-boxengine', () => {
     describe('#size', () => {
 
       it('should be the computed output', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(typeof sizer.size).to.be('number');
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         sizer.size = 42;
         expect(sizer.size).to.be(42);
       });
@@ -114,13 +114,13 @@ describe('phosphor-boxengine', () => {
     describe('#done', () => {
 
       it('should be an internal boolean', () => {
-        var sizer = new BoxSizer();
+        let sizer = new BoxSizer();
         expect(typeof sizer.done).to.be('boolean');
       });
 
       it('should be writable', () => {
-        var sizer = new BoxSizer();
-        var done = !sizer.done;
+        let sizer = new BoxSizer();
+        let done = !sizer.done;
         sizer.done = done;
         expect(sizer.done).to.be(done);
       });
@@ -136,7 +136,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should obey the min sizes', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].minSize = 10;
       sizers[1].minSize = 20;
       sizers[2].minSize = 30;
@@ -149,7 +149,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should obey the max sizes', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].maxSize = 10;
       sizers[1].maxSize = 20;
       sizers[2].maxSize = 30;
@@ -162,7 +162,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should handle negative layout space', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].minSize = 10;
       sizers[1].minSize = 20;
       sizers[2].minSize = 30;
@@ -174,7 +174,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should handle infinite layout space', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].maxSize = 10;
       sizers[1].maxSize = 20;
       sizers[2].maxSize = 30;
@@ -186,7 +186,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should maintain the size hints if possible', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 40;
       sizers[1].sizeHint = 50;
       sizers[2].sizeHint = 60;
@@ -199,7 +199,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should fairly distribute negative space', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 40;
       sizers[1].sizeHint = 50;
       sizers[2].sizeHint = 60;
@@ -212,7 +212,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should fairly distribute positive space', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 40;
       sizers[1].sizeHint = 50;
       sizers[2].sizeHint = 60;
@@ -225,7 +225,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should be callable multiple times for the same sizers', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 40;
       sizers[1].sizeHint = 50;
       sizers[2].sizeHint = 60;
@@ -248,7 +248,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should distribute negative space according to stretch factors', () => {
-      var sizers = createSizers(2);
+      let sizers = createSizers(2);
       sizers[0].sizeHint = 60;
       sizers[1].sizeHint = 60;
       sizers[0].stretch = 2;
@@ -262,7 +262,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should distribute positive space according to stretch factors', () => {
-      var sizers = createSizers(2);
+      let sizers = createSizers(2);
       sizers[0].sizeHint = 60;
       sizers[1].sizeHint = 60;
       sizers[0].stretch = 2;
@@ -276,7 +276,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should not shrink non-stretchable sizers', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 20;
       sizers[1].sizeHint = 40;
       sizers[2].sizeHint = 60;
@@ -291,7 +291,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should not expand non-stretchable sizers', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 20;
       sizers[1].sizeHint = 40;
       sizers[2].sizeHint = 60;
@@ -306,7 +306,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should shrink non-stretchable sizers if required', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 20;
       sizers[1].sizeHint = 40;
       sizers[2].sizeHint = 60;
@@ -324,7 +324,7 @@ describe('phosphor-boxengine', () => {
     });
 
     it('should expand non-stretchable sizers if required', () => {
-      var sizers = createSizers(4);
+      let sizers = createSizers(4);
       sizers[0].sizeHint = 20;
       sizers[1].sizeHint = 40;
       sizers[2].sizeHint = 60;

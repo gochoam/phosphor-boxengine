@@ -167,21 +167,21 @@ class BoxSizer {
 export
 function boxCalc(sizers: BoxSizer[], space: number): void {
   // Bail early if there is nothing to do.
-  var count = sizers.length;
+  let count = sizers.length;
   if (count === 0) {
     return;
   }
 
   // Setup the size and stretch counters.
-  var totalMin = 0;
-  var totalMax = 0;
-  var totalSize = 0;
-  var totalStretch = 0;
-  var stretchCount = 0;
+  let totalMin = 0;
+  let totalMax = 0;
+  let totalSize = 0;
+  let totalStretch = 0;
+  let stretchCount = 0;
 
   // Setup the sizers and compute the totals.
-  for (var i = 0; i < count; ++i) {
-    var sizer = sizers[i];
+  for (let i = 0; i < count; ++i) {
+    let sizer = sizers[i];
     initSizer(sizer);
     totalSize += sizer.size;
     totalMin += sizer.minSize;
@@ -199,8 +199,8 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
 
   // If the space is less than the total min, minimize each sizer.
   if (space <= totalMin) {
-    for (var i = 0; i < count; ++i) {
-      var sizer = sizers[i];
+    for (let i = 0; i < count; ++i) {
+      let sizer = sizers[i];
       sizer.size = sizer.minSize;
     }
     return;
@@ -208,8 +208,8 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
 
   // If the space is greater than the total max, maximize each sizer.
   if (space >= totalMax) {
-    for (var i = 0; i < count; ++i) {
-      var sizer = sizers[i];
+    for (let i = 0; i < count; ++i) {
+      let sizer = sizers[i];
       sizer.size = sizer.maxSize;
     }
     return;
@@ -218,12 +218,12 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
   // The loops below perform sub-pixel precision sizing. A near zero
   // value is used for compares instead of zero to ensure that the
   // loop terminates when the subdivided space is reasonably small.
-  var nearZero = 0.01;
+  let nearZero = 0.01;
 
   // A counter which is decremented each time a sizer is resized to
   // its limit. This ensures the loops terminate even if there is
   // space remaining to distribute.
-  var notDoneCount = count;
+  let notDoneCount = count;
 
   // Distribute negative delta space.
   if (space < totalSize) {
@@ -233,16 +233,16 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
     // a chance to consume its fair share for the pass, regardless of
     // whether a sizer before it reached its limit. This continues
     // until the stretchable sizers or the free space is exhausted.
-    var freeSpace = totalSize - space;
+    let freeSpace = totalSize - space;
     while (stretchCount > 0 && freeSpace > nearZero) {
-      var distSpace = freeSpace;
-      var distStretch = totalStretch;
-      for (var i = 0; i < count; ++i) {
-        var sizer = sizers[i];
+      let distSpace = freeSpace;
+      let distStretch = totalStretch;
+      for (let i = 0; i < count; ++i) {
+        let sizer = sizers[i];
         if (sizer.done || sizer.stretch === 0) {
           continue;
         }
-        var amt = sizer.stretch * distSpace / distStretch;
+        let amt = sizer.stretch * distSpace / distStretch;
         if (sizer.size - amt <= sizer.minSize) {
           freeSpace -= sizer.size - sizer.minSize;
           totalStretch -= sizer.stretch;
@@ -259,9 +259,9 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
     // Distribute any remaining space evenly among the non-stretchable
     // sizers. This progresses in phases in the same manner as above.
     while (notDoneCount > 0 && freeSpace > nearZero) {
-      var amt = freeSpace / notDoneCount;
-      for (var i = 0; i < count; ++i) {
-        var sizer = sizers[i];
+      let amt = freeSpace / notDoneCount;
+      for (let i = 0; i < count; ++i) {
+        let sizer = sizers[i];
         if (sizer.done) {
           continue;
         }
@@ -285,16 +285,16 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
     // a chance to consume its fair share for the pass, regardless of
     // whether a sizer before it reached its limit. This continues
     // until the stretchable sizers or the free space is exhausted.
-    var freeSpace = space - totalSize;
+    let freeSpace = space - totalSize;
     while (stretchCount > 0 && freeSpace > nearZero) {
-      var distSpace = freeSpace;
-      var distStretch = totalStretch;
-      for (var i = 0; i < count; ++i) {
-        var sizer = sizers[i];
+      let distSpace = freeSpace;
+      let distStretch = totalStretch;
+      for (let i = 0; i < count; ++i) {
+        let sizer = sizers[i];
         if (sizer.done || sizer.stretch === 0) {
           continue;
         }
-        var amt = sizer.stretch * distSpace / distStretch;
+        let amt = sizer.stretch * distSpace / distStretch;
         if (sizer.size + amt >= sizer.maxSize) {
           freeSpace -= sizer.maxSize - sizer.size;
           totalStretch -= sizer.stretch;
@@ -311,9 +311,9 @@ function boxCalc(sizers: BoxSizer[], space: number): void {
     // Distribute any remaining space evenly among the non-stretchable
     // sizers. This progresses in phases in the same manner as above.
     while (notDoneCount > 0 && freeSpace > nearZero) {
-      var amt = freeSpace / notDoneCount;
-      for (var i = 0; i < count; ++i) {
-        var sizer = sizers[i];
+      let amt = freeSpace / notDoneCount;
+      for (let i = 0; i < count; ++i) {
+        let sizer = sizers[i];
         if (sizer.done) {
           continue;
         }
