@@ -124,11 +124,11 @@ browserify myapp.js -o mybundle.js
 
 <span class="hljs-comment">// Setup a simple 3-column arrangement. Normally done via static HTML</span>
 <span class="hljs-comment">// or some form of DOM generation library. Kept simple for this example.</span>
-<span class="hljs-keyword">var</span> host = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col1 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col2 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> col3 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
-<span class="hljs-keyword">var</span> columns = [col1, col2, col3];
+<span class="hljs-keyword">let</span> host = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+<span class="hljs-keyword">let</span> col1 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+<span class="hljs-keyword">let</span> col2 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+<span class="hljs-keyword">let</span> col3 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+<span class="hljs-keyword">let</span> columns = [col1, col2, col3];
 
 host.style.position = <span class="hljs-string">'relative'</span>;
 host.style.height = <span class="hljs-string">'500px'</span>;
@@ -152,10 +152,10 @@ host.appendChild(col3);
 
 
 <span class="hljs-comment">// Create the sizers for the columns.</span>
-<span class="hljs-keyword">var</span> sizer1 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizer2 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizer3 = <span class="hljs-keyword">new</span> BoxSizer();
-<span class="hljs-keyword">var</span> sizers = [sizer1, sizer2, sizer3];
+<span class="hljs-keyword">let</span> sizer1 = <span class="hljs-keyword">new</span> BoxSizer();
+<span class="hljs-keyword">let</span> sizer2 = <span class="hljs-keyword">new</span> BoxSizer();
+<span class="hljs-keyword">let</span> sizer3 = <span class="hljs-keyword">new</span> BoxSizer();
+<span class="hljs-keyword">let</span> sizers = [sizer1, sizer2, sizer3];
 
 
 <span class="hljs-comment">// Setup the constraints on the column widths.</span>
@@ -187,10 +187,10 @@ sizer3.stretch = <span class="hljs-number">1</span>;
   boxCalc(sizers, host.offsetWidth);
 
   <span class="hljs-comment">// Layout the columns using the computed sizes.</span>
-  <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; sizers.length; ++i) {
-    <span class="hljs-keyword">var</span> col = columns[i];
-    <span class="hljs-keyword">var</span> sizer = sizers[i];
+  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; sizers.length; ++i) {
+    <span class="hljs-keyword">let</span> col = columns[i];
+    <span class="hljs-keyword">let</span> sizer = sizers[i];
     col.style.left = left + <span class="hljs-string">'px'</span>;
     col.style.width = sizer.size + <span class="hljs-string">'px'</span>;
     left += sizer.size;
