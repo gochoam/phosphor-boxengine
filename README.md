@@ -92,7 +92,10 @@ Usage Examples
 omit the type declarations when using a language other than TypeScript.
 
 ```typescript
-import { BoxSizer, boxCalc } from 'phosphor-boxengine';
+import {
+  BoxSizer, boxCalc
+} from 'phosphor-boxengine';
+
 
 // Setup a simple 3-column arrangement. Normally done via static HTML
 // or some form of DOM generation library. Kept simple for this example.
