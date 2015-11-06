@@ -99,11 +99,11 @@ import {
 
 // Setup a simple 3-column arrangement. Normally done via static HTML
 // or some form of DOM generation library. Kept simple for this example.
-var host = document.createElement('div');
-var col1 = document.createElement('div');
-var col2 = document.createElement('div');
-var col3 = document.createElement('div');
-var columns = [col1, col2, col3];
+let host = document.createElement('div');
+let col1 = document.createElement('div');
+let col2 = document.createElement('div');
+let col3 = document.createElement('div');
+let columns = [col1, col2, col3];
 
 host.style.position = 'relative';
 host.style.height = '500px';
@@ -127,10 +127,10 @@ document.body.appendChild(host);
 
 
 // Create the sizers for the columns.
-var sizer1 = new BoxSizer();
-var sizer2 = new BoxSizer();
-var sizer3 = new BoxSizer();
-var sizers = [sizer1, sizer2, sizer3];
+let sizer1 = new BoxSizer();
+let sizer2 = new BoxSizer();
+let sizer3 = new BoxSizer();
+let sizers = [sizer1, sizer2, sizer3];
 
 
 // Setup the constraints on the column widths.
@@ -162,10 +162,10 @@ window.onresize = () => {
   boxCalc(sizers, host.offsetWidth);
 
   // Layout the columns using the computed sizes.
-  var left = 0;
-  for (var i = 0; i < sizers.length; ++i) {
-    var col = columns[i];
-    var sizer = sizers[i];
+  let left = 0;
+  for (let i = 0; i < sizers.length; ++i) {
+    let col = columns[i];
+    let sizer = sizers[i];
     col.style.left = left + 'px';
     col.style.width = sizer.size + 'px';
     left += sizer.size;
