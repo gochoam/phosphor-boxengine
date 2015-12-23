@@ -143,7 +143,7 @@ class BoxSizer {
  *    distribute the positive delta as follows:
  *
  *    a. Expand each sizer with a stretch factor greater than zero by
- *       an amount proportional to the postive space and the sum of
+ *       an amount proportional to the positive space and the sum of
  *       stretch factors. If the sizer reaches its max size, remove
  *       it and its stretch factor from the computation.
  *
